@@ -19,7 +19,7 @@ type Webhook struct {
 
 func (w Webhook) Execute() {
 	go func() {
-		f, err := os.OpenFile("./log/"+strconv.Itoa(int(w.ID))+".log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+		f, err := os.OpenFile("./log/"+strconv.Itoa(int(w.ID))+".log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0777)
 		if err != nil {
 			log.Printf("error opening file: %v\n", err)
 		}
@@ -42,6 +42,6 @@ func (w Webhook) Print() {
 func init() {
 	logPath := "./log"
 	if _, err := os.Stat(logPath); os.IsNotExist(err) {
-		_ = os.Mkdir(logPath, 0666)
+		_ = os.Mkdir(logPath, 0777)
 	}
 }
