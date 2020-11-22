@@ -19,8 +19,9 @@ Or you can use `./cli` to get into the cli's shell and execute commands.
 4. e / execute id: execute specified webhook.
 5. l / list: list all webhooks.
 6. s / search keyword: search webhooks by a keyword in name or description.
-7. h / help: print help information. 
-8. q / quit: quit cli shell.
+7. p / print id: print detail information of specified webhooks.
+8. h / help: print help information. 
+9. q / quit: quit cli shell.
 
 ### Server
 Start server by run `./server` or `./server port`, the default port is 8080.

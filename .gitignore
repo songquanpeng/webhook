@@ -1,6 +1,4 @@
 *.exe
-server
-cli
 *.db
 .idea
 .vscode
