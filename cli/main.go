@@ -11,6 +11,7 @@ import (
 )
 
 var reader *bufio.Reader
+var domain = "your.domain.com"
 
 func getUserInput(prompt string) (s string) {
 	if prompt != "" {
@@ -67,6 +68,7 @@ func executeCommand(command []string) (stop bool) {
 		w.Url = getUUID()
 		updateWebhookFromUser(&w)
 		webhook.New(&w)
+		fmt.Println(fmt.Sprintf("The corresponding url is: https://%s/webhook/%s", domain, w.Url))
 	case "m":
 		fallthrough
 	case "modify":
@@ -153,6 +155,11 @@ func updateWebhookFromUser(w *webhook.Webhook) {
 }
 
 func main() {
+	if envDomain := os.Getenv("DOMAIN"); envDomain == "" {
+		fmt.Println("Warning: Environment variable \"DOMAIN\" not set.")
+	} else {
+		domain = envDomain
+	}
 	if len(os.Args) == 1 {
 		shell()
 	} else {

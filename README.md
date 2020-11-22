@@ -27,3 +27,9 @@ Or you can use `./cli` to get into the cli's shell and execute commands.
 Start server by run `./server` or `./server port`, the default port is 8080.
 
 Start server with pm2: `pm2 start ./server --name webhook-service -- 8080`.
+
+## User case: update blog when there is a new github commit
+1. Firstly you should create a shell script that runs `git pull` and blog website update command.
+2. Then you run the `cli` to create a new webhook, which executor is the path of the above script.
+3. Copy the url from the output and register the webhook in your Github repo's webhook page.
+4. Then when you push a new commit to this repo, Github will send a post request to the server which will execute the specified script.
