@@ -27,6 +27,12 @@ func Read(id uint) (w Webhook, found bool) {
 	return
 }
 
+func GetByURL(url string) (w Webhook, found bool) {
+	result := db.Where("url = ?", url).First(&w)
+	found = !errors.Is(result.Error, gorm.ErrRecordNotFound)
+	return
+}
+
 func All() (webhooks []Webhook) {
 	db.Find(&webhooks)
 	return
