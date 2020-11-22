@@ -7,4 +7,5 @@ bin/server:
 	go build -o ./bin/server
 
 clean:
-	rm -r ./bin
+	rm ./bin/server
+	rm ./bin/cli
