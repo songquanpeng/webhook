@@ -2,8 +2,7 @@
 
 ## Build
 ```
-go build -o ./bin/cli ./cli/main.go 
-go build -o ./bin/server ./server/main.go
+make
 ```
 
 ## Usage
